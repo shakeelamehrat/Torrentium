@@ -1,0 +1,186 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Torrentium Design System - Modern Dark Theme */
+
+@layer base {
+  :root {
+    /* Core Dark Theme Colors */
+    --background: 220 13% 9%;
+    --background-secondary: 220 13% 12%;
+    --background-tertiary: 220 13% 15%;
+    --foreground: 220 9% 95%;
+    --foreground-secondary: 220 9% 75%;
+
+    /* Card & Surface Colors */
+    --card: 220 13% 12%;
+    --card-foreground: 220 9% 95%;
+    --card-hover: 220 13% 16%;
+
+    /* Interactive Elements */
+    --primary: 142 71% 45%;
+    --primary-foreground: 220 13% 9%;
+    --primary-hover: 142 71% 40%;
+
+    --secondary: 220 13% 18%;
+    --secondary-foreground: 220 9% 85%;
+    --secondary-hover: 220 13% 22%;
+
+    /* Status Colors */
+    --success: 142 71% 45%;
+    --success-foreground: 220 13% 9%;
+    --warning: 45 93% 58%;
+    --warning-foreground: 220 13% 9%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 220 9% 95%;
+
+    /* Borders & Inputs */
+    --border: 220 13% 18%;
+    --border-hover: 220 13% 25%;
+    --input: 220 13% 15%;
+    --input-border: 220 13% 22%;
+    --ring: 142 71% 45%;
+
+    /* Muted Elements */
+    --muted: 220 13% 15%;
+    --muted-foreground: 220 9% 65%;
+
+    /* Accent Colors */
+    --accent: 220 13% 16%;
+    --accent-foreground: 220 9% 85%;
+
+    /* Popover */
+    --popover: 220 13% 12%;
+    --popover-foreground: 220 9% 95%;
+
+    /* Radius */
+    --radius: 0.75rem;
+
+    /* Sidebar */
+    --sidebar-background: 220 13% 9%;
+    --sidebar-foreground: 220 9% 85%;
+    --sidebar-primary: 142 71% 45%;
+    --sidebar-primary-foreground: 220 13% 9%;
+    --sidebar-accent: 220 13% 15%;
+    --sidebar-accent-foreground: 220 9% 85%;
+    --sidebar-border: 220 13% 18%;
+    --sidebar-ring: 142 71% 45%;
+
+    /* Progress & Loading */
+    --progress-bg: 220 13% 15%;
+    --progress-fill: 142 71% 45%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(142 71% 45%), hsl(142 71% 35%));
+    --gradient-card: linear-gradient(145deg, hsl(220 13% 12%), hsl(220 13% 14%));
+
+    /* Animations */
+    --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-medium antialiased;
+  }
+}
+
+@layer components {
+  /* Custom utility classes */
+  .glass-effect {
+    @apply backdrop-blur-sm bg-background/90 border border-border/50;
+  }
+
+  .card-gradient {
+    background: var(--gradient-card);
+  }
+
+  .btn-primary {
+    background: var(--gradient-primary);
+    @apply text-primary-foreground font-medium px-6 py-2.5 rounded-lg;
+    @apply hover:scale-105 active:scale-95;
+    transition: var(--transition-smooth);
+  }
+
+  .progress-bar {
+    @apply bg-muted rounded-full overflow-hidden;
+  }
+
+  .progress-fill {
+    @apply bg-primary h-full rounded-full;
+    transition: var(--transition-smooth);
+  }
+
+  .file-drop-zone {
+    @apply border-2 border-dashed border-border rounded-xl p-8;
+    @apply hover:border-primary/50 hover:bg-accent/30;
+    transition: var(--transition-smooth);
+  }
+
+  .file-drop-zone.drag-over {
+    @apply border-primary bg-primary/10;
+  }
+
+  .trust-score {
+    @apply inline-flex items-center px-2 py-1 rounded-md text-xs font-medium;
+  }
+
+  .trust-score.high {
+    @apply bg-success/20 text-success;
+  }
+
+  .trust-score.medium {
+    @apply bg-warning/20 text-warning;
+  }
+
+  .trust-score.low {
+    @apply bg-destructive/20 text-destructive;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite alternate;
+  }
+}
+
+@layer utilities {
+  /* Animation keyframes */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-4px); }
+  }
+
+  @keyframes pulse-glow {
+    0% { box-shadow: 0 0 5px hsl(var(--primary) / 0.3); }
+    100% { box-shadow: 0 0 20px hsl(var(--primary) / 0.6); }
+  }
+
+  @keyframes slide-in {
+    from { transform: translateX(-100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-slide-in {
+    animation: slide-in 0.3s ease-out;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-out;
+  }
+}
